@@ -1,8 +1,7 @@
 {
-    "name": "fabin/apirest",
     "autoload": {
         "psr-4": {
-            "api\\":"App"
+            "App\\":"App"
     },
     "files" : [
         "config.php"
