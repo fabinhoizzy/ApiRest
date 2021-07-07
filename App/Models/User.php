@@ -34,4 +34,21 @@
             }
         }
 
+        public static function insert($data){
+            $connPdo = new \PDO(DBDRIVE.': host='.DBHOST.'; dbname='.DBNAME, DBUSER,DBPASS);
+
+            $sql = 'INSERT INTO '.self::$table . '(email, password, name) VALUES (:email, :password, :name)';
+            $stmt = $connPdo->prepare($sql);
+            $stmt->bindValue(':email', $data['email']);
+            $stmt->bindValue(':password', $data['password']);
+            $stmt->bindValue(':name', $data['name']);
+            $stmt->execute();
+
+            if($stmt->rowCount() > 0) {
+                return 'Usuário(a) inserido com sucesso!';
+            } else {
+                throw new \Exception("falha em criar usuário!");
+            }
+        }
+
     }

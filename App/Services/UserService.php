@@ -14,8 +14,9 @@
             }
         }
         public function post()
-         {
-
+        {
+            $data = $_POST;
+            User::insert($data);
         }
         public function update()
         {
